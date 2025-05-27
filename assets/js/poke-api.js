@@ -12,4 +12,12 @@ return fetch(url)
 pokeApi.getPokemonDetail = (pokemon) => {
     return fetch(pokemon.url)
         .then((response)=> response.json())
+        .then ((pokemon))
+}
+convertApi=(pokeDetail)=>{
+    const pokemon = new Pokemon()
+    pokemon.id=pokemon.id
+    pokemon.name=pokeDetail.name
+    pokemon.type=pokeDetail.types.map
+
 }
