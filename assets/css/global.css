@@ -139,3 +139,6 @@ margin: 0%;
 .pagination button:hover{
     background-color: #5a66c4;
 }
+.remove{
+    display: none;
+}
