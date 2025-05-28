@@ -1,16 +1,12 @@
 const pokemonList = document.getElementById("pokemonList")
 const loadMore = document.getElementById("loadMore")
+const filterByType = document.getElementById("typeFilter")
 const maxRecords = 251
 const limit = 20
 let offset = 0
 
-pokeApi.getPokemons().then((pokemons=[])=>{
-    pokemonList.innerHTML += pokemons.map(convertPokemonToHTML).join('')
-})
-
-loadPokemonItens =(offset, limit)=>{
-    pokeApi.getPokemons(offset,limit).then((pokemons=[])=>{
-        const newHTML=pokemons.map((pokemon)=>
+getPokemoList = (pokemons) => {
+    const newHTML=pokemons.map((pokemon)=>
             `<li class="pokemon ${pokemon.type}">
                 <span class="number">#${pokemon.id}</span>
                 <span class="name">${pokemon.name}</span>
@@ -21,18 +17,58 @@ loadPokemonItens =(offset, limit)=>{
                     <img src="${pokemon.photo}" alt="${pokemon.name}">
                 </div>
             </li>
-    `
-        
+    `       
         ).join('')
         pokemonList.innerHTML += newHTML
+}
+
+loadPokemonItens =(offset, limit)=>{
+    pokeApi.getPokemons(offset,limit).then((pokemons=[])=>{
+        return getPokemoList(pokemons)
     })
 }
+getPokemonsByType=(type, offset,limit)=>{
+    pokeApi.getPokemonsByType(type).then((pokemons=[])=>{
+    const filtered = pokemons.filter(pokemon => pokemon.id >= 1 && pokemon.id <= 251)
+    return getPokemoList(filtered)
+    })
+}
+loadTypes=()=>{
+    const gen1and2Types = [
+        "normal", "fire", "water", "electric", "grass", "ice",
+        "fighting", "poison", "ground", "flying", "psychic",
+        "bug", "rock", "ghost", "steel", "dragon"
+    ];
+    pokeApi.getPokemonTypes().then((types)=>{
+        const filteredTypes = types.filter(t => gen1and2Types.includes(t.name));
+        const newOptions = filteredTypes.map((t)=>
+            `<option class="options" value="${t.name}">${t.name}</option>`
+        ).join('')
+        filterByType.innerHTML += newOptions
+    })
+}
+filterByType.addEventListener('change', (event)=>{
+    const selectedType = event.target.value;
+    pokemonList.innerHTML = ''
+    if(selectedType ===""){
+        offset = 0
+        loadPokemonItens(offset, limit)
+    }
+    else{
+        offset = 0
+        getPokemonsByType(selectedType)
+        loadMore.classList.add('remove')
+    
+    }
+})
 loadPokemonItens(offset, limit)
+loadTypes()
 loadMore.addEventListener('click', ()=>{
     offset += limit
     const records = offset + limit
     if(records >= maxRecords){
         const newLimit = maxRecords-offset
+        filterByType()
             loadPokemonItens(offset, newLimit)
             loadMore.classList.add('remove')
     }
@@ -40,3 +76,4 @@ loadMore.addEventListener('click', ()=>{
         loadPokemonItens(offset, limit)
     }
 })  
+

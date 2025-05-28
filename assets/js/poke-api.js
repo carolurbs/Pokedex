@@ -25,3 +25,27 @@ pokeApi.getPokemonDetail = (pokemon) => {
         .then((response)=> response.json())
         .then(convertApi)
 }
+pokeApi.getPokemonsByType = (type) => {
+    const url = `https://pokeapi.co/api/v2/type/${type}`
+
+    return fetch(url)
+        .then(response => response.json())
+        .then(json => json.pokemon.map(p => p.pokemon))
+        .then(pokemons => pokemons.map(pokeApi.getPokemonDetail))
+        .then(detailRequests => Promise.all(detailRequests))
+        .catch(error => {
+            console.error(error)
+            return []
+        });
+}
+pokeApi.getPokemonTypes = () => {
+    const url = "https://pokeapi.co/api/v2/type";
+
+    return fetch(url)
+        .then(response => response.json())
+        .then(json => json.results)
+        .catch(error => {
+            console.error(error)
+            return []
+        });
+}
