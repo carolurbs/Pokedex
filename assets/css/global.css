@@ -42,7 +42,8 @@ margin: 0%;
 .water{
     background-color: #6390F0;
 }
-.eletric{
+.electric
+{
     background-color: #F7D02C;
 }
 .grass{
@@ -120,4 +121,21 @@ margin: 0%;
     filter:brightness(1.1);
     text-transform: capitalize;
 }
-
+.pagination{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 1rem;
+}
+.pagination button{
+    background-color: #6c79db;
+    color: #fff;
+    border: none;
+    padding: .5rem 1rem;
+    border-radius: 1rem;
+}
+.pagination button:hover{
+    background-color: #5a66c4;
+}
