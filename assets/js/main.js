@@ -1,17 +1,14 @@
-convertPokemonTypes=(pokemonTypes)=>{
-    return pokemonTypes.map((typeSlot)=>`<li class="type">${typeSlot.type.name}</li>`)
-}
 
 convertPokemonToHTML =(pokemon) => {
     return `
-    <li class="pokemon">
+    <li class="pokemon ${pokemon.type}">
                 <span class="number">#00${pokemon.id}</span>
                 <span class="name">${pokemon.name}</span>
                 <div class="details">
                     <ol class="types">
-                        ${convertPokemonTypes(pokemon.types).join('')}
+                        ${pokemon.types.map((type)=>`<li class="type ${type}">${type}</li>`).join('')}
                     </ol>
-                    <img src="${pokemon.sprites.other.dream_world.front_default}" alt="${pokemon.name}">
+                    <img src="${pokemon.photo}" alt="${pokemon.name}">
                 </div>
             </li>
     `
