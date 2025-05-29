@@ -1,8 +1,9 @@
 const pokemonList = document.getElementById("pokemonList")
 const loadMore = document.getElementById("loadMore")
 const filterByType = document.getElementById("typeFilter")
+const reset = document.getElementById("menu")
 const maxRecords = 251
-const limit = 20
+const limit = 8
 let offset = 0
 
 getPokemoList = (pokemons) => {
@@ -53,6 +54,7 @@ filterByType.addEventListener('change', (event)=>{
     if(selectedType ===""){
         offset = 0
         loadPokemonItens(offset, limit)
+        loadMore.classList.remove('remove')
     }
     else{
         offset = 0
@@ -63,12 +65,12 @@ filterByType.addEventListener('change', (event)=>{
 })
 loadPokemonItens(offset, limit)
 loadTypes()
+
 loadMore.addEventListener('click', ()=>{
     offset += limit
     const records = offset + limit
     if(records >= maxRecords){
         const newLimit = maxRecords-offset
-        filterByType()
             loadPokemonItens(offset, newLimit)
             loadMore.classList.add('remove')
     }
@@ -76,4 +78,10 @@ loadMore.addEventListener('click', ()=>{
         loadPokemonItens(offset, limit)
     }
 })  
-
+reset.addEventListener('click', ()=>{
+    pokemonList.innerHTML = ''
+    offset = 0
+    loadPokemonItens(offset, limit)
+    filterByType.value = ''
+    loadMore.classList.remove('remove')
+})

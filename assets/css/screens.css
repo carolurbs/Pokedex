@@ -1,4 +1,5 @@
 @media screen and (min-width: 380px) {
+
     .pokemons{
         grid-template-columns: repeat(2, 1fr);
     }
@@ -6,16 +7,17 @@
 }
 
 @media screen and (min-width: 576px) {
+
     .pokemons{
         grid-template-columns: repeat(3, 1fr);
     }
 
 }
 @media screen and (min-width: 992px) {
+    
     .content{
         max-width: 992px;
-        height: auto;
-        margin : 1rem auto;
+        margin : 10rem auto 1rem;
     }
     .pokemons{
         grid-template-columns: repeat(4, 1fr);
