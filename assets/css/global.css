@@ -73,4 +73,5 @@ text-align: center;
 }
 .remove{
     display: none;
+    transition: all .5s ease-in-out;
 }

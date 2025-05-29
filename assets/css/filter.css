@@ -5,12 +5,10 @@ form{
     color: #fff;
 }
 
-
 label{
     margin: .5rem ;
     opacity: .5;
     cursor: pointer;
-
 }
 select{
     width: 50%;
