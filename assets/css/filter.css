@@ -18,10 +18,11 @@ select{
     outline: none;
     color: #fff;
     border: .01rem solid #fff;
-    border-radius: .2rem;
+    border-radius: 1rem;
     opacity: .5;
 }
 select:focus{
     opacity: .3;
     outline: .2rem solid #6c79db;
+    
 }

@@ -49,3 +49,14 @@ pokeApi.getPokemonTypes = () => {
             return []
         });
 }
+pokeApi.getPokemonByName = (name) => {
+    const url = `https://pokeapi.co/api/v2/pokemon/${name}`;
+    return fetch(url)
+        .then(response => response.json())
+        .then(json => json.pokemon.map(p => p.pokemon))
+        .then(pokemons => pokemons.map(pokeApi.getPokemonDetail))
+        .then(detailRequests => Promise.all(detailRequests))
+        .catch(error => {
+            console.error(error) 
+        });
+}

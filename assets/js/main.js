@@ -17,12 +17,14 @@ getPokemoList = (pokemons) => {
                     </ol>
                     <img src="${pokemon.photo}" alt="${pokemon.name}">
                 </div>
+                <div class="stats">
+                <button id="details-btn" class="details-btn ${pokemon.type}">+</button>
+                </div
             </li>
     `       
         ).join('')
         pokemonList.innerHTML += newHTML
 }
-
 loadPokemonItens =(offset, limit)=>{
     pokeApi.getPokemons(offset,limit).then((pokemons=[])=>{
         return getPokemoList(pokemons)
