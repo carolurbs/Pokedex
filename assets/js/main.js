@@ -25,6 +25,7 @@ getPokemoList = (pokemons) => {
         ).join('')
         pokemonList.innerHTML += newHTML
 }
+
 loadPokemonItens =(offset, limit)=>{
     pokeApi.getPokemons(offset,limit).then((pokemons=[])=>{
         return getPokemoList(pokemons)
