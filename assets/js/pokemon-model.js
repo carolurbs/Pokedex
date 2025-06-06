@@ -6,7 +6,4 @@ class Pokemon {
     photo;
     ;
     abilities = [];
-    stats = [
-        
-    ];
 }

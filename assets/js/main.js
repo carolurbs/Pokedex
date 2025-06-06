@@ -5,8 +5,10 @@ const reset = document.getElementById("menu")
 const maxRecords = 251
 const limit = 8
 let offset = 0
+let loadedPokemons = []
 
-getPokemoList = (pokemons) => {
+getPokemonList = (pokemons) => {
+    loadedPokemons = loadedPokemons.concat(pokemons);
     const newHTML=pokemons.map((pokemon)=>
             `<li class="pokemon ${pokemon.type}">
                 <span class="number">#${pokemon.id}</span>
@@ -18,7 +20,7 @@ getPokemoList = (pokemons) => {
                     <img src="${pokemon.photo}" alt="${pokemon.name}">
                 </div>
                 <div class="stats">
-                <button id="details-btn" class="details-btn ${pokemon.type}">+</button>
+                <button id="details-btn" class="details-btn ${pokemon.type}" data-id="${pokemon.id}">+</button>
                 </div
             </li>
     `       
@@ -28,13 +30,13 @@ getPokemoList = (pokemons) => {
 
 loadPokemonItens =(offset, limit)=>{
     pokeApi.getPokemons(offset,limit).then((pokemons=[])=>{
-        return getPokemoList(pokemons)
+        return getPokemonList(pokemons)
     })
 }
 getPokemonsByType=(type, offset,limit)=>{
     pokeApi.getPokemonsByType(type).then((pokemons=[])=>{
     const filtered = pokemons.filter(pokemon => pokemon.id >= 1 && pokemon.id <= 251)
-    return getPokemoList(filtered)
+    return getPokemonList(filtered)
     })
 }
 loadTypes=()=>{

@@ -121,54 +121,76 @@
 
 
 }
-.details-btn.normal:hover{
+.details-btn.normal:hover,
+.close-btn.normal:hover{
     color: #A8A77A;
 }
-.details-btn.fire:hover{
+.details-btn.fire:hover,
+.close-btn.fire:hover
+{
     color: #ee8130;
 }
-.details-btn.water:hover{
+.details-btn.water:hover,
+.close-btn.water:hover{
     color: #6390F0;
 }
-.details-btn.electric:hover{
+.details-btn.electric:hover,
+.close-btn.electric:hover{
     color: #F7D02C;
 }
-.details-btn.grass:hover{
+.details-btn.grass:hover,
+.close-btn.grass:hover{
     color: #7AC74C;
 }
-.details-btn.ice:hover{
+.details-btn.ice:hover,
+.close-btn.ice:hover{
     color: #96D9D6;
 }
-.details-btn.fighting:hover{
+.details-btn.fighting:hover,
+.close-btn.fighting:hover{
     color: #C22E28;
 }
-.details-btn.poison:hover{
+.details-btn.poison:hover,
+.close-btn.poison:hover{
     color: #A33EA1;
 }
-.details-btn.ground:hover{
+.details-btn.ground:hover,
+.close-btn.ground:hover{
     color: #E2BF65;
 }
-.details-btn.flying:hover{
+.details-btn.flying:hover,
+.close-btn.flying:hover{
     color: #A98FF3;
 }
-.details-btn.psychic:hover{
+.details-btn.psychic:hover,
+.close-btn.psychic:hover
+    {
     color: #F95587;
 }
-.details-btn.bug:hover{
+.details-btn.bug:hover,
+.close-btn.bug:hover
+{
     color: #A6B91A;
 }
-.details-btn.rock:hover{
+.details-btn.rock:hover,
+.close-btn.rock:hover{
     color: #B6A136;
 }
-.details-btn.ghost:hover{
+.details-btn.ghost:hover,
+.close-btn.ghost:hover{
     color: #735797;
 }
-.details-btn.dragon:hover{
+.details-btn.dragon:hover,
+.close-btn.dragon:hover{
     color: #6F35FC;
 }
-.details-btn.steel:hover{
+.details-btn.steel:hover,
+.close-btn.steel:hover
+{
     color: #B7B7CE;
 }
-.details-btn.fairy:hover{
+.details-btn.fairy:hover,
+.close-btn.fairy:hover
+{
     color: #D685AD;
 }

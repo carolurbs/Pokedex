@@ -18,6 +18,10 @@ convertApi=(pokeDetail)=>{
     pokemon.types = types
     pokemon.type = type
     pokemon.photo = pokeDetail.sprites.other.dream_world.front_default
+    const abilities = pokeDetail.abilities.map((abilitySlot) => abilitySlot.ability.name)
+    const [ability]= abilities
+    pokemon.abilities= abilities
+    pokemon.ability=ability
     return pokemon
 }
 pokeApi.getPokemonDetail = (pokemon) => {
@@ -47,16 +51,5 @@ pokeApi.getPokemonTypes = () => {
         .catch(error => {
             console.error(error)
             return []
-        });
-}
-pokeApi.getPokemonByName = (name) => {
-    const url = `https://pokeapi.co/api/v2/pokemon/${name}`;
-    return fetch(url)
-        .then(response => response.json())
-        .then(json => json.pokemon.map(p => p.pokemon))
-        .then(pokemons => pokemons.map(pokeApi.getPokemonDetail))
-        .then(detailRequests => Promise.all(detailRequests))
-        .catch(error => {
-            console.error(error) 
         });
 }
